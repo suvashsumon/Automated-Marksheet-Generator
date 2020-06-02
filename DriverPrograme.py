@@ -7,5 +7,7 @@ data = conn.execute("SELECT * FROM FinalModelTest;")
 for row in data:
     student = Marksheet(row)
     student.show()
+    student.setTotal()
+    student.checkTotal()
     
 conn.close()

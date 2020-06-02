@@ -1,13 +1,4 @@
 class Marksheet:
-    # total marks
-    bantotal = 0
-    engtotal = 0
-    icttotal = 0
-    phytotal = 0
-    chetotal = 0
-    mathtotal = 0
-    biototal = 0
-    
     # gpa points
     bangpa = 0.0
     enggpa = 0.0
@@ -53,6 +44,7 @@ class Marksheet:
         self.bio2 = info[19]
         
     def show(self):
+        # just showing all data in terminal
         print(self.roll)
         print(self.name)
         print(self.co)
@@ -73,3 +65,31 @@ class Marksheet:
         print(self.math2)
         print(self.bio1)
         print(self.bio2)
+        
+    def calculateTotal(self,mark):
+        # create sum of cq, mcq and practical
+        marks = mark.split("+")
+        total = 0
+        for i in marks:
+            total += int(i)
+        return total
+        
+    def setTotal(self):
+        # total marks added
+        self.bantotal = self.calculateTotal(self.ban1) + self.calculateTotal(self.ban2)
+        self.engtotal = self.calculateTotal(self.eng1) + self.calculateTotal(self.eng2)
+        self.icttotal = self.calculateTotal(self.ict)
+        self.phytotal = self.calculateTotal(self.phy1) + self.calculateTotal(self.phy2)
+        self.chetotal = self.calculateTotal(self.che1) + self.calculateTotal(self.che2)
+        self.mathtotal = self.calculateTotal(self.math1) + self.calculateTotal(self.math2)
+        self.biototal = self.calculateTotal(self.bio1) + self.calculateTotal(self.bio2)
+        
+    def checkTotal(self):
+        # just for checking total marks
+        print(f"total in bangla : {self.bantotal}")
+        print(f"total in englilsh : {self.engtotal}")
+        print(f"total in ict : {self.icttotal}")
+        print(f"total in phy : {self.phytotal}")
+        print(f"total in che : {self.chetotal}")
+        print(f"total in math : {self.mathtotal}")
+        print(f"total in bio : {self.biototal}")
