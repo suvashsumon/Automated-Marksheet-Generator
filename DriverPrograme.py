@@ -9,5 +9,9 @@ for row in data:
     student.show()
     student.setTotal()
     student.checkTotal()
+    student.setGpa()
+    student.checkGpa()
+    student.setGrade()
+    student.checkGrade()
     
 conn.close()
