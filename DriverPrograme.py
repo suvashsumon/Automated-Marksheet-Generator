@@ -13,5 +13,10 @@ for row in data:
     student.checkGpa()
     student.setGrade()
     student.checkGrade()
+    student.calResultGpa()
+    student.calResultGrade()
+    print(f"result is : {student.resultGpa}")
+    print(f"result is : {student.resultGrade}")
+    print()
     
 conn.close()

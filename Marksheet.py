@@ -1,12 +1,5 @@
 class Marksheet:
-    # gpa points
-    bangpa = 0.0
-    enggpa = 0.0
-    ictgpa = 0.0
-    phygpa = 0.0
-    chegpa = 0.0
-    mathgpa = 0.0
-    biogpa = 0.0
+    
     
     # grade marks
     bangrade = ""
@@ -98,19 +91,19 @@ class Marksheet:
         # calculate gpa
         m = mark/2
         if m>=80:
-            return "5.00"
+            return 5.00
         elif m<80 and m>=70:
-            return "4.00"
+            return 4.00
         elif m<70 and m>=60:
-            return "3.50"
+            return 3.50
         elif m<60 and m>=50:
-            return "3.00"
+            return 3.00
         elif m<50 and m>=40:
-            return "2.50"
+            return 2.50
         elif m<40 and m>=33:
-            return "2.00"
+            return 2.00
         else:
-            return "0.00"
+            return 0.00
         
     def setGpa(self):
         # setting gpa
@@ -169,3 +162,45 @@ class Marksheet:
         print(f"grade in che : {self.chegrade}")
         print(f"grade in math : {self.mathgrade}")
         print(f"grade in bio : {self.biograde}")
+        
+    def calResultGpa(self):
+        # calculate result in gpa
+        res = self.bangpa + self.enggpa + self.ictgpa + self.phygpa + self.chegpa
+        if self.fourthsub=="126":
+            if self.bangrade!="F" and self.enggrade!="F" and self.ictgrade!="F" and self.phygrade!="F" and self.chegrade!="F" and self.biograde!="F":
+                if self.mathgpa>=2.0:
+                    result = ( res + self.biogpa + ( self.mathgpa - 2 ) ) / 5
+                else:
+                    result = ( res + self.biogpa ) / 5
+            else:
+                result = 0.00
+        elif self.fourthsub=="127":
+            if self.bangrade!="F" and self.enggrade!="F" and self.ictgrade!="F" and self.phygrade!="F" and self.chegrade!="F" and self.mathgrade!="F":
+                if self.biogpa>=2.0:
+                    result = ( res + self.mathgpa + ( self.biogpa - 2 ) ) / 5
+                else:
+                    result = ( res + self.mathgpa ) / 5
+            else:
+                result = 0.00
+        
+        if result>=5.00:
+            self.resultGpa = 5.00
+        else:
+            self.resultGpa = result
+        
+    def calResultGrade(self):
+        # calculate result grade
+        if self.resultGpa>=5.0:
+            self.resultGrade = "A+"
+        elif self.resultGpa<5.0 and self.resultGpa>=4.0:
+            self.resultGrade = "A"
+        elif self.resultGpa<4.0 and self.resultGpa>=3.50:
+            self.resultGrade = "A-"
+        elif self.resultGpa<3.50 and self.resultGpa>=3.0:
+            self.resultGrade = "B"
+        elif self.resultGpa<3.0 and self.resultGpa>=2.0:
+            self.resultGrade = "C"
+        elif self.resultGpa<2.0 and self.resultGpa>=2.5:
+            self.resultGrade = "D"
+        else:
+            self.resultGrade = "F"
