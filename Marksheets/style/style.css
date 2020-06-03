@@ -1,0 +1,17 @@
+.heading, .titleclass, .marktitle {
+	text-align: center;
+}
+.heading {
+	line-height: 0.5;
+}
+.intro, .mark {
+	width: 95%;
+	margin: auto;
+}
+.mark {
+	text-align: center;
+}
+.container {
+	border: 1px solid black;
+	border-radius: 5%;
+}
